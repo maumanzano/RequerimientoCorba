@@ -1,19 +1,19 @@
 module sop_corba{
 
 	interface ClienteInt;
-	struct Usuario{
-		string nombres;
-		string apellidos;
-		string nickname;
-		string clave;
-	};
-	
-	struct Administrador{
-		string login;
-		string clave;
-	};
 	
 	interface AdministradorInt{
+		struct Usuario{
+			string nombres;
+			string apellidos;
+			string nickname;
+			string clave;
+		};
+	
+		struct Administrador{
+			string login;
+			string clave;
+		};
 		typedef sequence<Usuario>listUsuarios;
 		void registrarUsuario(in Usuario objUsuario);
 		listUsuarios listarUsuarios();
