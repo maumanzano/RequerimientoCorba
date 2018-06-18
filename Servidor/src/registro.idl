@@ -22,6 +22,12 @@ module sop_corba{
 	};
 	
 	interface ServidorAudioInt{
+		struct Usuario{
+			string nombres;
+			string apellidos;
+			string nickname;
+			string clave;
+		};
 		typedef sequence<Usuario>listUsuarios;
 		typedef sequence<octet> audio;
 		boolean registrarCliente(in ClienteInt objcllbck,in string usuario);
