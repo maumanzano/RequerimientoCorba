@@ -1,0 +1,54 @@
+module sop_corba{
+
+	interface ClienteInt;
+	
+	interface AdministradorInt{
+		struct Usuario{
+			string nombres;
+			string apellidos;
+			string nickname;
+			string clave;
+		};
+	
+		struct Administrador{
+			string login;
+			string clave;
+		};
+		typedef sequence<Usuario>listUsuarios;
+		void registrarUsuario(in Usuario objUsuario);
+		listUsuarios listarUsuarios();
+		void iniciarSesion(in Administrador objAdministrador);
+		
+	};
+	
+	interface ServidorAudioInt{
+		struct Usuario{
+			string nombres;
+			string apellidos;
+			string nickname;
+			string clave;
+		};
+		typedef sequence<Usuario>listUsuarios;
+		typedef sequence<octet> audio;
+		boolean registrarCliente(in ClienteInt objcllbck,in string usuario);
+		void enviarMensaje(in string usuario,in string mensaje);
+		boolean desconectarCliente(in ClienteInt objcllbck,in string usuario);
+		listUsuarios obtenerUsuariosConectados();
+		boolean establecerSesionPriv(in string usuario1, in string usuario2);
+		boolean enviarMensajePriv(in string us1, in string us2, in string mensaje);
+		void enviarAudio(out audio audioStreaming);
+		void registrarRR();
+		
+	};
+	
+	interface ClienteInt{
+		typedef sequence<octet> audio;
+		void recibirMensaje(in string usuario,in string mensaje);
+		void establecerSesionPrivada(in string usuario);
+		void recibirMensajePrivado(in string usuario,in string mensaje);
+		void recibirContacto(in string usuario);
+		string obtenerNombre();
+		void borrarListaDeContactos();
+		void recibirAudio(in audio audioStreaming);
+	};
+};
