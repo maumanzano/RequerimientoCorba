@@ -1,4 +1,6 @@
 module sop_corba{
+
+	interface ClienteInt;
 	struct Usuario{
 		string nombres;
 		string apellidos;
@@ -25,7 +27,7 @@ module sop_corba{
 		boolean registrarCliente(in ClienteInt objcllbck,in string usuario);
 		void enviarMensaje(in string usuario,in string mensaje);
 		boolean desconectarCliente(in ClienteInt objcllbck,in string usuario);
-		ListUsuarios obtenerUsuariosConectados();
+		listUsuarios obtenerUsuariosConectados();
 		boolean establecerSesionPriv(in string usuario1, in string usuario2);
 		boolean enviarMensajePriv(in string us1, in string us2, in string mensaje);
 		void enviarAudio(out audio audioStreaming);
