@@ -41,7 +41,7 @@ module sop_corba{
 		
 	};
 	
-	interface ClienteIntInt{
+	interface ClienteInt{
 		typedef sequence<octet> audio;
 		void recibirMensaje(in string usuario,in string mensaje);
 		void establecerSesionPrivada(in string usuario);
